@@ -1,0 +1,41 @@
+{
+    "model": {
+        "name": "Qwen/Qwen2-VL-7B",
+        "max_length": 2048,
+        "max_prompt_length": 512
+    },
+    "training": {
+        "num_train_epochs": 3,
+        "per_device_train_batch_size": 4,
+        "gradient_accumulation_steps": 4,
+        "learning_rate": 2e-4,
+        "weight_decay": 0.01,
+        "warmup_steps": 100,
+        "logging_steps": 10,
+        "save_steps": 100,
+        "eval_steps": 100,
+        "evaluation_strategy": "steps",
+        "load_best_model_at_end": true,
+        "fp16": true,
+        "optim": "adamw_torch"
+    },
+    "lora": {
+        "r": 16,
+        "lora_alpha": 32,
+        "target_modules": ["q_proj", "k_proj", "v_proj", "o_proj"],
+        "lora_dropout": 0.05,
+        "bias": "none",
+        "task_type": "CAUSAL_LM"
+    },
+    "data": {
+        "input_dir": "data/raw",
+        "output_dir": "data/processed",
+        "train_ratio": 0.8,
+        "val_ratio": 0.1,
+        "test_ratio": 0.1
+    },
+    "paths": {
+        "model_output_dir": "models/requirements_extractor",
+        "wandb_log_dir": "wandb_logs"
+    }
+} 
