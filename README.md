@@ -1,178 +1,114 @@
-# Requirements Extractor
+# Automata - Requirements Extractor
 
-A tool that automatically extracts and structures software requirements from PDF documents using fine-tuned Qwen2-VL model. The system provides a user-friendly web interface for uploading PDFs and generates well-structured requirements documentation.
-
-## Features
-
-- PDF document processing
-- Automatic requirements extraction
-- Structured output in markdown format
-- Modern, responsive web interface
-- Drag-and-drop file upload
-- Real-time processing feedback
+A powerful application that extracts requirements from PDF documents using AI, with a modern web interface built with Next.js.
 
 ## Project Structure
 
 ```
 requirements-extractor/
-├── backend/                 # FastAPI backend
-│   ├── main.py             # Main FastAPI application
-│   └── requirements.txt     # Backend dependencies
-├── frontend/               # Next.js frontend
-│   ├── src/
-│   │   └── app/           # Frontend application code
-│   └── package.json        # Frontend dependencies
-├── src/                    # Core Python modules
-│   ├── inference.py        # Model inference code
-│   └── train.py           # Model training code
-├── final_model/           # Trained model files
-├── output/                # Generated requirements output
-└── example.pdf           # Example PDF for testing
+├── frontend/           # Next.js frontend application
+│   ├── src/           # Source code
+│   ├── public/        # Static assets
+│   └── package.json   # Frontend dependencies
+├── backend/           # Python backend application
+│   ├── src/          # Source code
+│   └── requirements.txt # Backend dependencies
+└── README.md         # This file
 ```
+
+## Features
+
+- **PDF Requirements Extraction**: Upload PDF documents and extract requirements using AI
+- **Markdown Export**: View extracted requirements in a beautiful markdown format
+- **Word Document Export**: Download requirements as a formatted Word document
+- **Modern UI**: Clean and intuitive interface built with Next.js and Tailwind CSS
+- **Dark Mode Support**: Seamless dark/light mode switching
+- **Responsive Design**: Works perfectly on all device sizes
 
 ## Prerequisites
 
-- Python 3.8 or higher
-- Node.js 16 or higher
-- npm or yarn
-- CUDA-capable GPU (recommended for faster inference)
+- Node.js 18.x or later
+- Python 3.8 or later
+- Git
 
-## Setup
-
-### Backend Setup
-
-1. Create and activate a Python virtual environment:
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-2. Install Python dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-3. Start the backend server:
-```bash
-python main.py
-```
-
-The backend server will run on `http://localhost:8000`
+## Setup Instructions
 
 ### Frontend Setup
 
-1. Install Node.js dependencies:
-```bash
-cd frontend
-npm install
-```
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
 
-2. Start the development server:
-```bash
-npm run dev
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
 The frontend will be available at `http://localhost:3000`
+
+### Backend Setup
+
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+
+2. Create and activate a virtual environment (recommended):
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Start the backend server:
+   ```bash
+   python src/main.py
+   ```
+
+The backend API will be available at `http://localhost:8000`
 
 ## Usage
 
 1. Open your browser and navigate to `http://localhost:3000`
-2. Upload a PDF document by either:
-   - Clicking the upload area
-   - Dragging and dropping a PDF file
-3. Wait for the processing to complete
-4. View the extracted requirements in the structured format
-
-## Output Format
-
-The extracted requirements are structured as follows:
-
-```markdown
-# Requirements Document
-
-## Functional Requirements
-- [Extracted functional requirements]
-
-## Non-Functional Requirements
-- [Extracted non-functional requirements]
-
-## User Stories
-- [Extracted user stories]
-
-## Acceptance Criteria
-- [Extracted acceptance criteria]
-
-## Document Summary
-- [Summary of key insights]
-```
-
-## Model Details
-
-The system uses:
-- Qwen2-VL-2B-Instruct as the base model
-- Fine-tuned for requirements extraction
-- LoRA for efficient adaptation
-- Optimized for PDF document processing
+2. Click the "Extract Requirements" button
+3. Upload your PDF document
+4. Wait for the extraction process to complete
+5. View the extracted requirements in the markdown viewer
+6. Optionally download the requirements as a Word document
 
 ## Development
 
-### Training the Model
+### Frontend Development
 
-To train the model on your own data:
+- Built with Next.js 14
+- Uses Tailwind CSS for styling
+- TypeScript for type safety
+- React Markdown for markdown rendering
+- Docx.js for Word document generation
 
-1. Prepare your training data
-2. Run the training script:
-```bash
-python src/train.py
-```
+### Backend Development
 
-### Customizing the Frontend
-
-The frontend is built with:
-- Next.js 14
-- Tailwind CSS
-- React Markdown
-- TypeScript
-
-To modify the UI:
-1. Edit files in `frontend/src/app`
-2. Styles are in `frontend/src/app/globals.css`
-
-## Troubleshooting
-
-Common issues and solutions:
-
-1. **Backend not starting**
-   - Check if port 8000 is available
-   - Ensure all dependencies are installed
-   - Verify Python version compatibility
-
-2. **Frontend not connecting to backend**
-   - Verify backend is running
-   - Check CORS settings in backend
-   - Ensure correct API URL in frontend
-
-3. **Model loading issues**
-   - Verify model files are present in `final_model/`
-   - Check GPU memory availability
-   - Ensure CUDA is properly configured
+- FastAPI for the REST API
+- PyPDF2 for PDF processing
+- Custom AI model for requirements extraction
 
 ## Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Acknowledgments
-
-- Qwen2-VL model team
-- FastAPI framework
-- Next.js team
-- All contributors and users 

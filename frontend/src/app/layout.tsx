@@ -1,36 +1,40 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+"use client";
+import "jsvectormap/dist/css/jsvectormap.css";
+import "flatpickr/dist/flatpickr.min.css";
+import "@/css/satoshi.css";
+import "@/css/style.css";
+import React, { useEffect, useState } from "react";
+import Loader from "@/components/common/Loader";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import { Orbitron } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({ subsets: ["latin"] });
+const orbitron = Orbitron({ 
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: '--font-orbitron',
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
-  title: "Requirements Extractor",
-  description: "Extract and structure software requirements from PDF documents",
-};
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  // const pathname = usePathname();
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);
+  }, []);
+
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
-      >
-        {children}
+    <html lang="en" className={`${inter.className} ${orbitron.variable}`} suppressHydrationWarning={true}>
+      <body className="dark:bg-boxdark-2 dark:text-bodydark">
+        <div className="dark:bg-boxdark-2 dark:text-bodydark">
+          {loading ? <Loader /> : children}
+        </div>
       </body>
     </html>
   );
