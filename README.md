@@ -1,20 +1,113 @@
-# Requirements Extractor
+# Docs Extractor AI
 
-A tool that automatically extracts and structures software requirements from PDF documents using fine-tuned Qwen2-VL model. The system provides a user-friendly web interface for uploading PDFs and generates well-structured requirements documentation.
+Docs Extractor AI is an intelligent tool that automatically extracts and structures software requirements from PDF documents using the fine-tuned Qwen2-VL model. The system provides a user-friendly web interface for uploading PDFs and generates well-structured requirements documentation.
+
+## Table of Contents
+
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Getting Started](#getting-started)
+- [Demo](#demo)
+- [Project Structure](#project-structure)
+- [Usage Examples](#usage-examples)
+- [Contributing](#contributing)
+- [Acknowledgments](#acknowledgments)
 
 ## Features
 
-- PDF document processing
-- Automatic requirements extraction
-- Structured output in markdown format
-- Modern, responsive web interface
-- Drag-and-drop file upload
-- Real-time processing feedback
+- **PDF Document Processing**  
+  Upload and process PDF documents through an intuitive drag-and-drop interface.
+  
+- **Automatic Requirements Extraction**  
+  Leverage the power of Qwen2-VL model to extract requirements automatically.
+  
+- **Structured Output**  
+  Generate well-organized requirements documentation in markdown format.
+  
+- **Real-time Processing**  
+  Get immediate feedback on document processing status.
+
+## Technology Stack
+
+- **Frontend:**  
+  - Next.js 14  
+  - React  
+  - Tailwind CSS
+  - TypeScript
+
+- **Backend:**  
+  - FastAPI
+  - Python 3.8+
+
+- **AI Model:**  
+  - Qwen2-VL-2B-Instruct
+  - LoRA fine-tuning
+
+- **Document Processing:**  
+  - PDF parsing
+  - Markdown generation
+
+## Getting Started
+
+### Prerequisites
+
+- **Python:** Version 3.8 or higher  
+- **Node.js:** Version 16 or higher  
+- **Package Manager:** npm or yarn  
+- **GPU:** CUDA-capable (recommended for faster inference)
+
+### Installation
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/yourusername/docs-extractor-ai.git
+   cd docs-extractor-ai
+   ```
+
+2. **Backend Setup:**
+
+   ```bash
+   cd backend
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   pip install -r requirements.txt
+   ```
+
+3. **Frontend Setup:**
+
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+4. **Start the Development Servers:**
+
+   Backend:
+   ```bash
+   cd backend
+   python main.py
+   ```
+
+   Frontend:
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+
+5. **View the Application:**
+
+   Open your browser and navigate to http://localhost:3000.
+
+## Demo
+
+https://github.com/user-attachments/assets/0d9bb015-76b1-4698-9c6d-03d339b98ffd
+
 
 ## Project Structure
 
 ```
-requirements-extractor/
+docs-extractor-ai/
 ├── backend/                 # FastAPI backend
 │   ├── main.py             # Main FastAPI application
 │   └── requirements.txt     # Backend dependencies
@@ -30,149 +123,51 @@ requirements-extractor/
 └── example.pdf           # Example PDF for testing
 ```
 
-## Prerequisites
+## Usage Examples
 
-- Python 3.8 or higher
-- Node.js 16 or higher
-- npm or yarn
-- CUDA-capable GPU (recommended for faster inference)
+### Uploading Documents:
+- Drag and drop PDF files into the upload area
+- Click to select files from your device
 
-## Setup
+### Processing Documents:
+- View real-time processing status
+- Monitor extraction progress
 
-### Backend Setup
-
-1. Create and activate a Python virtual environment:
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-2. Install Python dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-3. Start the backend server:
-```bash
-python main.py
-```
-
-The backend server will run on `http://localhost:8000`
-
-### Frontend Setup
-
-1. Install Node.js dependencies:
-```bash
-cd frontend
-npm install
-```
-
-2. Start the development server:
-```bash
-npm run dev
-```
-
-The frontend will be available at `http://localhost:3000`
-
-## Usage
-
-1. Open your browser and navigate to `http://localhost:3000`
-2. Upload a PDF document by either:
-   - Clicking the upload area
-   - Dragging and dropping a PDF file
-3. Wait for the processing to complete
-4. View the extracted requirements in the structured format
-
-## Output Format
-
-The extracted requirements are structured as follows:
-
-```markdown
-# Requirements Document
-
-## Functional Requirements
-- [Extracted functional requirements]
-
-## Non-Functional Requirements
-- [Extracted non-functional requirements]
-
-## User Stories
-- [Extracted user stories]
-
-## Acceptance Criteria
-- [Extracted acceptance criteria]
-
-## Document Summary
-- [Summary of key insights]
-```
-
-## Model Details
-
-The system uses:
-- Qwen2-VL-2B-Instruct as the base model
-- Fine-tuned for requirements extraction
-- LoRA for efficient adaptation
-- Optimized for PDF document processing
-
-## Development
-
-### Training the Model
-
-To train the model on your own data:
-
-1. Prepare your training data
-2. Run the training script:
-```bash
-python src/train.py
-```
-
-### Customizing the Frontend
-
-The frontend is built with:
-- Next.js 14
-- Tailwind CSS
-- React Markdown
-- TypeScript
-
-To modify the UI:
-1. Edit files in `frontend/src/app`
-2. Styles are in `frontend/src/app/globals.css`
-
-## Troubleshooting
-
-Common issues and solutions:
-
-1. **Backend not starting**
-   - Check if port 8000 is available
-   - Ensure all dependencies are installed
-   - Verify Python version compatibility
-
-2. **Frontend not connecting to backend**
-   - Verify backend is running
-   - Check CORS settings in backend
-   - Ensure correct API URL in frontend
-
-3. **Model loading issues**
-   - Verify model files are present in `final_model/`
-   - Check GPU memory availability
-   - Ensure CUDA is properly configured
+### Viewing Results:
+- Browse structured requirements
+- Export in markdown format
+- Share results with team members
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+Contributions are welcome! Follow these steps to contribute:
 
-## License
+1. **Fork the Repository**
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+2. **Create a Feature Branch:**
+
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+3. **Commit Your Changes:**
+
+   ```bash
+   git commit -m "Add some fix/feature"
+   ```
+
+4. **Push to Your Branch:**
+
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+5. **Open a Pull Request:**
+   Submit a pull request outlining your changes.
 
 ## Acknowledgments
 
-- Qwen2-VL model team
-- FastAPI framework
-- Next.js team
-- All contributors and users 
+- Qwen2-VL model team for the base model
+- FastAPI framework for the backend
+- Next.js team for the frontend framework
+- All contributors and users of the project 
